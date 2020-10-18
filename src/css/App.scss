@@ -1,0 +1,219 @@
+@import "~bootstrap/scss/bootstrap";
+
+$custom-black: #1b1717;
+$custom-blue: #007bff;
+$custom-white: #fff;
+$available: #5dab5d;
+$reserved: #ff5b5c;
+$high-demand: #eded29;
+$rightSep: 170px;
+$dayWidth: 70px;
+$pageCalendarMT: 40px;
+$dayDivWH: 30px;
+
+@font-face {
+  font-family: 'customFont';
+  src: url('futurapt-book-webfont.woff');
+}
+* {
+  font-family: customFont, cursive, sans-serif;
+}
+#page-calendar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: $pageCalendarMT;
+}  
+.block-left {
+  text-align: center;
+  > .week-status {
+    margin: 5px;
+    width: 200px;
+  }
+  > div {    
+    margin: 15px 0;
+  }
+}
+.block-left a:hover, .month-header > div > a {
+  cursor: pointer;
+}
+.available {
+  background-color: $available;
+}
+.reserved {
+  background-color: $reserved;
+}
+.high-demand {
+  background-color: $high-demand;
+}
+.reserved-weeks {
+  > div {
+    margin: 5px 0;
+  }
+  .price {
+    font-weight: bold;
+  }
+}
+.month-header {
+  > div {
+  display: inline-block;
+  }
+  .title {
+    width: 160px;
+    span {
+      padding-right: 20px;
+    }  
+  }
+}
+.header-n-days {
+  text-align: center;
+}
+.days-rows {
+  > div {
+    margin: 5px auto;
+  }
+}
+.days-name, .month-header {
+  .day-name {
+    display: inline-block;
+  }
+}
+.day {
+  display: inline-block;
+  padding: 0 10px;
+  cursor: pointer;
+  > div {
+    transition: background-color .25s ease-in, opacity .12s ease-in;
+    color: $custom-black;
+    border-radius: 2em;
+    width: $dayDivWH;
+    height: $dayDivWH;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      opacity: 0.7;      
+    }
+  }
+}
+.day.selected > div {
+  background-color: $custom-blue;
+  color: $custom-white;
+}
+.day-available > div {
+  background-color: $available;
+}
+.day-reserved > div {
+  background-color: $reserved;
+}
+.day-high-demand > div {
+  background-color: $high-demand;
+}
+.price-week {
+  text-align: right;
+  display: inline-block;
+  margin: 10px 0;
+  .checkbox {
+    padding: 0;
+    display: inline-block;
+  }
+}
+svg {
+  transition: opacity .12s ease-in;
+  color: #007bff;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.fa-month-header {
+    transform: scale(1.35)
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .day {
+    width: $dayWidth;
+  }
+  .days-name, .month-header {
+    .day-name {
+      width: $dayWidth;
+    }
+  }
+  .days-name {
+    margin-right: $rightSep;
+  }
+  .price-week {
+    width: $rightSep;
+  }
+  .book-now, .month-header {
+    margin: 30px 170px 30px 0;
+    text-align: center;
+  }    
+}
+
+@media screen and (max-width: 992px) {
+  #page-calendar {
+    margin-top: $pageCalendarMT - 10;
+  }
+  .day, .day-name {
+    width: $dayWidth - 10;
+  }
+  .days-name {
+    margin-right: $rightSep - 70;
+  }
+  .price-week {
+    width: $rightSep - 70;
+  }
+  .book-now, .month-header {
+    margin: 30px 100px 30px 0;
+    text-align: center;
+  }  
+}
+
+@media screen and (max-width: 767px) {
+  #page-calendar {
+    margin-top: $pageCalendarMT - 20;
+    flex-direction: column-reverse;
+  }
+  body, .btn {
+    font-size: 0.9rem;
+  }
+  .block-left {
+    margin: 0 auto;
+  }
+  .day, .day-name {
+    width: $dayWidth - 30;
+  }
+  .days-name {
+    margin-right: $rightSep - 50;
+  }
+  .price-week {
+    width:$rightSep - 50;
+  }
+  .book-now, .month-header {
+    margin: 30px 0;
+    text-align: center;
+  }  
+}
+
+@media screen and (max-width: 575px) {
+  #page-calendar {
+    margin-top: $pageCalendarMT - 30;
+  }
+  body, .btn {
+    font-size: 0.8rem;
+  }
+  .day > div {
+    width: $dayDivWH - 5;
+    height: $dayDivWH - 5;
+  }
+  .day, .day-name {
+    width: $dayWidth - 40;
+  }
+  .days-name {
+    margin-right: $rightSep - 70;
+  }
+  .price-week {
+    width: $rightSep - 70;
+  }
+}
